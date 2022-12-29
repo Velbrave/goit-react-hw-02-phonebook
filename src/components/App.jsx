@@ -19,9 +19,12 @@ class App extends React.Component {
 
   handleSubmitData = ({ name, number }) => {
     const contact = { id: this.loginInputId, name, number };
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, contact],
-    }));
+
+    this.state.contacts.find(contact => contact.name === name)
+      ? alert('This contact already exists')
+      : this.setState(prevState => ({
+          contacts: [...prevState.contacts, contact],
+        }));
   };
 
   deleteContact = contactId => {

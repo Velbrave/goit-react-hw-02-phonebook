@@ -21,4 +21,14 @@
   padding-top: 6px;
   padding-bottom: 6px;
   cursor: pointer;
+  border-radius: 4px;
+  color: white;
+  background-color: royalblue;
+  transition: background-color 300ms linear, color 300ms linear;
+}
+
+.button:hover {
+  color: blue;
+  background-color: azure;
+  transition: background-color 300ms linear, color 300ms linear;
 }

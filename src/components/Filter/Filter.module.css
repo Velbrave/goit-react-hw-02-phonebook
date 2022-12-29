@@ -1,0 +1,9 @@
+.labelFilter {
+  width: 200px;
+  height: 60px;
+  font-weight: 600;
+  font-size: 19px;
+  display: grid;
+  margin-top: 20px;
+  margin-left: 20px;
+}
