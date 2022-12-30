@@ -2,10 +2,10 @@ import React from 'react';
 import css from './ContactList.module.css';
 import PropTypes from 'prop-types';
 
-const ContactList = ({ contacts, onDeleteContact }) => {
+const ContactList = ({ onContacts, onDeleteContact }) => {
   return (
     <ul className={css.contactList}>
-      {contacts.map(({ id, name, number }) => {
+      {onContacts.map(({ id, name, number }) => {
         return (
           <li className={css.listItem} key={id}>
             {name}: {number}
@@ -26,7 +26,7 @@ const ContactList = ({ contacts, onDeleteContact }) => {
 export default ContactList;
 
 ContactList.protoTypes = {
-  contacts: PropTypes.shape({
+  onContacts: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
     number: PropTypes.number,

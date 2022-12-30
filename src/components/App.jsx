@@ -15,10 +15,10 @@ class App extends React.Component {
     // contacts: [],
     filter: '',
   };
-  loginInputId = nanoid();
 
   handleSubmitData = ({ name, number }) => {
-    const contact = { id: this.loginInputId, name, number };
+    const userId = nanoid();
+    const contact = { id: userId, name, number };
 
     this.state.contacts.find(contact => contact.name === name)
       ? alert('This contact already exists')
@@ -33,11 +33,11 @@ class App extends React.Component {
     }));
   };
 
-  chengeFilter = event => {
+  changeFilter = event => {
     this.setState({ filter: event.target.value });
   };
 
-  filterVisible = () => {
+  filteredContacts = () => {
     const normalizeFilter = this.state.filter.toLowerCase();
     return this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizeFilter)
@@ -45,16 +45,19 @@ class App extends React.Component {
   };
 
   render() {
-    const visibleFilter = this.filterVisible();
-    const { handleSubmitData, chengeFilter, deleteContact } = this;
+    const visibleContacts = this.filteredContacts();
+    const { handleSubmitData, changeFilter, deleteContact } = this;
 
     return (
       <div className="container">
         <h1>Phonebook</h1>
         <ContactForm onSubmit={handleSubmitData} />
         <h2>Contacts</h2>
-        <Filter value={this.state.filter} onChange={chengeFilter} />
-        <ContactList contacts={visibleFilter} onDeleteContact={deleteContact} />
+        <Filter value={this.state.filter} onChange={changeFilter} />
+        <ContactList
+          onContacts={visibleContacts}
+          onDeleteContact={deleteContact}
+        />
       </div>
     );
   }
